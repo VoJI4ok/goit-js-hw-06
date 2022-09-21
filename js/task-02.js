@@ -6,3 +6,6 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
+
+const list = document.querySelector("#ingredients")
+document.createElement("li")
