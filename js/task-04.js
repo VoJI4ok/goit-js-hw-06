@@ -1,16 +1,19 @@
-const actions = document.querySelectorAll('#counter button');
-const counter = document.querySelector('#counter>span');
 
-let counterValue = 0;
-
-actions[0].addEventListener('click', (event) => {
-    console.log('event.target: ', counterValue)
-    counterValue = counterValue-1;
-    counter.textContent = counterValue;
-});
-
-actions[1].addEventListener('click',(event) => {
-    console.log('event.target: ', counterValue)
-    counterValue = counterValue+1;
-    counter.textContent = counterValue;
-});
+const refs = {
+    decrementBtn: document.querySelector('[data-action="decrement"]'),
+    valueLabel: document.querySelector("#value"),
+    incrementBtn: document.querySelector('[data-action="increment"]'),
+  };
+  let counterValue = Number.parseInt(refs.valueLabel.textContent) || 0;
+  function updateValue(newValue) {
+    refs.valueLabel.textContent = newValue;
+  }
+  refs.decrementBtn.addEventListener("click", () => {
+    counterValue -= 1;
+    updateValue(counterValue);
+  });
+  refs.incrementBtn.addEventListener("click", () => {
+    counterValue += 1;
+    updateValue(counterValue);
+  });
+  
